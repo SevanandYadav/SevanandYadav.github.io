@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Ask Questions</title>
+<script language="JavaScript" type="text/javascript">
+var globalFunctions;
+globalFunctions = window.top.fraTopFrame.fraGlobalFunctions;
+function getAnswer()
+{
+var answer = 0;
+while (document.QuestionForm.radQuestionChoice[answer].checked != true)
+{
+answer++;
+}
+return String.fromCharCode(65 + answer);
+}
+function buttonCheckQ_onclick()
+{
+var questionNumber = globalFunctions.currentQNumber;
+if (globalFunctions.answerCorrect(questionNumber,getAnswer()) == true)
+{
+alert("You got it right");
+}
+else
+{
+alert("You got it wrong");
+}
+window.location.reload();
+}
+</script>
+</head>
+<body style="background-color: #000033;">
+<table align=center border="2" width="70%">
+<tr>
+<td bgcolor=RoyalBlue>
+<form name="QuestionForm">
+<script language="JavaScript" type="text/javascript">
+document.write(globalFunctions.getQuestion());
+</script>
+</form>
+</td>
+</tr>
+</table>
+</body>
+</html>
